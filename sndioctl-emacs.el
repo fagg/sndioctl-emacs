@@ -66,33 +66,33 @@
 (defun sndioctl--increase-volume ()
   "Increases volume according to the delta defined above."
   (sndioctl--call
-   (concat "output.level=+"
+   (concat "-q output.level=+"
 	   sndioctl-default-volume-delta))
   (if sndioctl-verbose
       (message "%s" (sndioctl--status-message))))
 
 (defun sndioctl--decrease-volume ()
-    "Decrease volume according to the delta defined above."
+  "Decrease volume according to the delta defined above."
   (sndioctl--call
-   (concat "output.level=-"
+   (concat "-q output.level=-"
 	   sndioctl-default-volume-delta))
   (if sndioctl-verbose
       (message "%s" (sndioctl--status-message))))
 
 (defun sndioctl--set-mute ()
   "Sets mute."
-  (sndioctl--call "output.mute=1")
+  (sndioctl--call "-q output.mute=1")
   (if sndioctl-verbose
       (message "%s" (sndioctl--status-message))))
 
 (defun sndioctl--unset-mute ()
   "Unsets mute"
-  (sndioctl--call "output.mute=0")
+  (sndioctl--call "-q output.mute=0")
   (if sndioctl-verbose
       (message "%s" (sndioctl--status-message))))
 
 (defun sndioctl--toggle-mute ()
   "Toggles mute"
-  (sndioctl--call "output.mute=!")
+  (sndioctl--call "-q output.mute=!")
   (if sndioctl-verbose
       (message "%s" (sndioctl--status-message))))
